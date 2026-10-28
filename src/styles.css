@@ -1,0 +1,84 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1b2925;
+  background: #f5f5f2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, textarea { font: inherit; }
+button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid #94c9a6; outline-offset: 2px; }
+
+.shell { max-width: 1220px; padding: 0 36px; margin: 0 auto; }
+.topbar { height: 86px; display: flex; align-items: center; gap: 13px; border-bottom: 1px solid #e2e5df; }
+.brand-mark { width: 37px; height: 37px; border-radius: 12px; display: grid; place-items: center; background: #183d31; color: white; font: 800 19px Inter, ui-sans-serif, system-ui, sans-serif; }
+.topbar h1 { margin: 0; font: 700 15px Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.02em; }
+.eyebrow { margin: 0 0 5px; color: #718079; font-size: 9px; font-weight: 700; letter-spacing: .14em; }
+.topbar .eyebrow { margin-bottom: 2px; font-size: 8px; }
+.privacy-pill { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; padding: 9px 13px; border: 1px solid #dce5dc; border-radius: 50px; color: #315f47; background: #edf5eb; font-size: 11px; font-weight: 600; }
+.privacy-pill span, .dot { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: #42a36a; }
+.intro { padding: 48px 0 30px; max-width: 700px; }
+.intro .eyebrow { color: #4b8a63; }
+.intro h2 { margin: 0 0 9px; font: 700 clamp(27px, 4vw, 38px) Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.045em; }
+.intro > p:last-child { margin: 0; color: #727d78; font-size: 14px; line-height: 1.65; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr); gap: 19px; align-items: stretch; }
+.camera-card, .assistant-card { overflow: hidden; border: 1px solid #e2e5df; border-radius: 14px; background: #fff; box-shadow: 0 8px 30px #1b292508; }
+.camera-view { position: relative; min-height: 410px; overflow: hidden; background: #e7eae6; }
+.camera-view video { display: block; width: 100%; height: 410px; object-fit: cover; }
+.empty-camera { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #718079; text-align: center; }
+.camera-icon { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid #ced6ce; border-radius: 50%; color: #7e9185; font-size: 26px; }
+.empty-camera p { margin: 14px 0 4px; color: #45564d; font-size: 13px; font-weight: 600; }
+.empty-camera small { font-size: 11px; }
+.capture-canvas { display: none; }
+.camera-label { position: absolute; top: 14px; left: 14px; display: flex; align-items: center; gap: 7px; padding: 8px 10px; border-radius: 5px; background: #fffE; color: #52625a; font-size: 9px; font-weight: 700; letter-spacing: .08em; }
+.dot { width: 6px; height: 6px; background: #9aa49e; }
+.dot.active { background: #ef6a55; box-shadow: 0 0 0 3px #ef6a5520; }
+.camera-controls { min-height: 72px; padding: 15px 17px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.button { min-height: 40px; padding: 0 16px; border: 0; border-radius: 7px; cursor: pointer; font-size: 12px; font-weight: 600; transition: transform .15s, background .15s; }
+.button:hover:not(:disabled) { transform: translateY(-1px); }
+.button:disabled { opacity: .45; cursor: not-allowed; }
+.button.primary { color: #fff; background: #204d3b; }
+.button.primary:hover:not(:disabled) { background: #286347; }
+.button.secondary { color: #345644; background: #eaf2e9; }
+.live-toggle { display: inline-flex; align-items: center; gap: 9px; color: #66726c; font-size: 10px; cursor: pointer; }
+.live-toggle input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.toggle-track { width: 30px; height: 17px; padding: 2px; border-radius: 20px; background: #d6ddd7; transition: background .15s; }
+.toggle-track::after { content: ""; display: block; width: 13px; height: 13px; border-radius: 50%; background: #fff; transition: transform .15s; }
+.live-toggle input:checked + .toggle-track { background: #4e9c69; }
+.live-toggle input:checked + .toggle-track::after { transform: translateX(13px); }
+.live-toggle input:disabled + .toggle-track { opacity: .5; }
+.assistant-card { padding: 22px; }
+.card-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 24px; }
+.card-heading h3 { margin: 0; font: 700 18px Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: -.03em; }
+.status-tag { max-width: 160px; padding: 7px 9px; border-radius: 5px; background: #f1f4f0; color: #718079; font-size: 9px; text-align: right; }
+.field-label { display: block; margin-bottom: 8px; color: #45554d; font-size: 11px; font-weight: 600; }
+textarea { width: 100%; resize: vertical; min-height: 80px; padding: 12px; border: 1px solid #dce2dc; border-radius: 7px; color: #293831; background: #fbfcfa; font-size: 12px; line-height: 1.6; }
+.action-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
+.runtime-hint { color: #8a948e; font-size: 9px; text-align: right; }
+.answer-box { min-height: 122px; margin-top: 23px; padding: 15px; border: 1px solid #e5e9e3; border-radius: 8px; background: #f7f9f6; }
+.answer-box .eyebrow { color: #578265; }
+.answer-box > p:last-child { margin: 11px 0 0; color: #405149; font-size: 12px; line-height: 1.65; }
+.privacy-note { margin: 14px 0 0; color: #858e88; font-size: 9px; line-height: 1.55; }
+.error-message { margin: 12px 0 0; padding: 10px; border-radius: 6px; color: #983e35; background: #fff0ed; font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
+footer { display: flex; justify-content: space-between; padding: 25px 0; color: #919a94; font-size: 9px; letter-spacing: .08em; }
+
+@media (max-width: 850px) {
+  .shell { padding: 0 20px; }
+  .workspace { grid-template-columns: 1fr; }
+  .camera-view, .camera-view video { min-height: 310px; height: 48vw; max-height: 450px; }
+  .intro { padding-top: 36px; }
+}
+
+@media (max-width: 500px) {
+  .shell { padding: 0 14px; }
+  .camera-controls { align-items: flex-start; flex-direction: column; }
+  .assistant-card { padding: 17px; }
+  .card-heading { flex-direction: column; }
+  .status-tag { max-width: 100%; text-align: left; }
+  .action-row { align-items: flex-start; flex-direction: column; }
+  .runtime-hint { text-align: left; }
+  footer { gap: 12px; font-size: 8px; }
+}
